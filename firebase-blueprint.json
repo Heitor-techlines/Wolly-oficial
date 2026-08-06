@@ -1,0 +1,321 @@
+{
+  "entities": {
+    "Profile": {
+      "title": "Profile",
+      "description": "User digital sub-profile inside Wolly",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nickname": { "type": "string" },
+        "avatar": { "type": "string" },
+        "avatarBg": { "type": "string" },
+        "banner": { "type": "string" },
+        "bio": { "type": "string" },
+        "followersCount": { "type": "integer" },
+        "followingCount": { "type": "integer" },
+        "postsCount": { "type": "integer" },
+        "crowns": { "type": "integer" },
+        "followingIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "name", "nickname", "avatar", "avatarBg", "banner", "bio", "followersCount", "followingCount", "postsCount", "followingIds"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "Strictly chronological Gramp feed publication on Wolly",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "content": { "type": "string" },
+        "image": { "type": "string" },
+        "theme": { "type": "string" },
+        "hashtags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "likes": { "type": "integer" },
+        "likedBy": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "disclosedWhyVisible": { "type": "string" },
+        "sharesCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "authorName", "authorNickname", "authorAvatar", "authorAvatarBg", "content", "hashtags", "likes", "likedBy", "createdAt"]
+    },
+    "Clip": {
+      "title": "Clip",
+      "description": "Vertical immersive video clip on Wolly",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "videoPlaceholder": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "likes": { "type": "integer" },
+        "likedBy": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "theme": { "type": "string" },
+        "hashtags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "sharesCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "authorName", "authorAvatar", "authorAvatarBg", "videoPlaceholder", "description", "location", "likes", "likedBy"]
+    },
+    "PostIt": {
+      "title": "PostIt",
+      "description": "Temporary 24h digital recado on Wolly's board",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "content": { "type": "string" },
+        "bgColor": { "type": "string" },
+        "image": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "authorName", "authorNickname", "authorAvatar", "authorAvatarBg", "content", "bgColor", "createdAt"]
+    },
+    "Ink": {
+      "title": "Ink",
+      "description": "Wolly live streaming channel descriptor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "title": { "type": "string" },
+        "spectatorsCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "authorName", "authorNickname", "authorAvatar", "authorAvatarBg", "title", "spectatorsCount", "createdAt"]
+    },
+    "InkMessage": {
+      "title": "InkMessage",
+      "description": "Live comments submitted during an active Ink",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "authorName", "authorNickname", "authorAvatar", "authorAvatarBg", "text", "createdAt"]
+    },
+    "CrownTransaction": {
+      "title": "CrownTransaction",
+      "description": "Audit trace for Wolly Crowns balance movements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "profileId": { "type": "string" },
+        "amount": { "type": "integer" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["earn", "spend"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "profileId", "amount", "description", "type", "createdAt"]
+    },
+    "Series": {
+      "title": "Series",
+      "description": "Sequence of chronological post episodes / chapters",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "cover": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "chaptersCount": { "type": "integer" },
+        "followerIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "title", "description", "profileId", "authorName", "authorNickname", "createdAt", "chaptersCount", "followerIds"]
+    },
+    "Challenge": {
+      "title": "Challenge",
+      "description": "Community challenge created by users offering rewards",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "creatorName": { "type": "string" },
+        "creatorNickname": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "reward": { "type": "integer" },
+        "expiresIn": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "creatorId", "creatorName", "creatorNickname", "title", "description", "reward", "expiresIn", "createdAt"]
+    },
+    "DirectMessage": {
+      "title": "DirectMessage",
+      "description": "Direct chat message sent between two profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderNickname": { "type": "string" },
+        "senderAvatar": { "type": "string" },
+        "senderAvatarBg": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "senderId", "receiverId", "senderName", "senderNickname", "senderAvatar", "senderAvatarBg", "text", "createdAt"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "User login account with associated sub-profiles",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "nickname": { "type": "string" },
+        "name": { "type": "string" },
+        "password": { "type": "string" },
+        "avatarChar": { "type": "string" },
+        "avatarBg": { "type": "string" },
+        "profiles": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "currentProfileId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "nickname", "name", "password", "profiles", "currentProfileId"]
+    },
+    "WollySearch": {
+      "title": "WollySearch",
+      "description": "Interactive survey/poll search created by users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "creatorName": { "type": "string" },
+        "creatorNickname": { "type": "string" },
+        "creatorAvatar": { "type": "string" },
+        "creatorAvatarBg": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["single", "multiple", "scale", "ranking"] },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "maxScale": { "type": "integer" },
+        "scaleMinLabel": { "type": "string" },
+        "scaleMaxLabel": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "votesCount": { "type": "integer" }
+      },
+      "required": ["id", "creatorId", "creatorName", "creatorNickname", "creatorAvatar", "title", "type", "createdAt"]
+    },
+    "SearchVote": {
+      "title": "SearchVote",
+      "description": "Individual vote recorded for a Wolly search",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "searchId": { "type": "string" },
+        "profileId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorNickname": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorAvatarBg": { "type": "string" },
+        "votedAt": { "type": "string", "format": "date-time" },
+        "selectedOptions": { "type": "array", "items": { "type": "string" } },
+        "scaleValue": { "type": "integer" },
+        "rankingItems": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "searchId", "profileId", "authorName", "authorNickname", "authorAvatar", "votedAt"]
+    }
+  },
+  "firestore": {
+    "/accounts/{email}": {
+      "schema": "Account",
+      "description": "Stores user login account definitions and sub-profiles sync"
+    },
+    "/profiles/{profileId}": {
+      "schema": "Profile",
+      "description": "Stores user sub-profiles"
+    },
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Stores standard Gramp posts"
+    },
+    "/clips/{clipId}": {
+      "schema": "Clip",
+      "description": "Stores immersive short vertical clips"
+    },
+    "/post_its/{postitId}": {
+      "schema": "PostIt",
+      "description": "Stores 24h stickers / local sticky posts"
+    },
+    "/inks/{inkId}": {
+      "schema": "Ink",
+      "description": "Metadata for active livestreaming ink networks"
+    },
+    "/inks/{inkId}/messages/{messageId}": {
+      "schema": "InkMessage",
+      "description": "Live chats associated with active ink rooms"
+    },
+    "/crown_transactions/{transactionId}": {
+      "schema": "CrownTransaction",
+      "description": "History of user earnings and redemptions"
+    },
+    "/series/{seriesId}": {
+      "schema": "Series",
+      "description": "Stores episode sequence definitions"
+    },
+    "/challenges/{challengeId}": {
+      "schema": "Challenge",
+      "description": "Stores community tasks and challenges"
+    },
+    "/direct_messages/{messageId}": {
+      "schema": "DirectMessage",
+      "description": "Stores real-time direct chat messages between profiles"
+    },
+    "/searches/{searchId}": {
+      "schema": "WollySearch",
+      "description": "Stores user created Wolly Searches"
+    },
+    "/searches/{searchId}/votes/{voteId}": {
+      "schema": "SearchVote",
+      "description": "Stores response votes for a specific Wolly Search"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wolly</title>
+    
+    <!-- PWA Installation Support and Colors -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1xcNOkJuZ32J5wY3xQGSjNsZm8DtSBZay" />
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1xcNOkJuZ32J5wY3xQGSjNsZm8DtSBZay" />
+  </head>
+  <body class="bg-slate-50">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Register service worker for PWA installability -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('Wolly Service Worker successfully registered!', reg.scope))
+            .catch((err) => console.error('Wolly Service Worker registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
+
