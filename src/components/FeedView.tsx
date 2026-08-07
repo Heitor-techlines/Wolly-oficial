@@ -9,7 +9,6 @@ import { FileText, Search, Users, Bell, Plus, Heart, MessageSquare, Share2, Tras
 import { motion, AnimatePresence } from "motion/react";
 import { Profile, Post, PostIt, Ink, Challenge, Series, Clip, WollySearch, FeedPreferences, POSTIT_MUSIC_LIST } from "../types";
 import { playPostItSynth, stopPostItSynth } from "../lib/synth";
-import wollyLogo from "../assets/images/wolly_logo.png";
 import UserAvatar from "./UserAvatar";
 import SharePostModal from "./SharePostModal";
 import LineNewsModal from "./LineNewsModal";

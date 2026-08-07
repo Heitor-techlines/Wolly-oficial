@@ -1,7 +1,7 @@
 {
   "name": "Wolly",
   "short_name": "Wolly",
-  "description": "Uma rede social cronológica, focada em privacidade, bem-estar e autonomia, sem anúncios e sem algoritmos manipuladores.",
+  "description": "Your Social Media, on your way.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
