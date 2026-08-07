@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db , cleanUndefined } from ../firebase;
 import { collection, addDoc } from "firebase/firestore";
 import { Profile, DirectMessage } from "../types";
 import React from "react";
