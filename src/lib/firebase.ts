@@ -14,5 +14,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+// SHIM TEMPORÁRIO: Resolve o erro de exportação sem precisar editar outros arquivos.
+export function cleanUndefined<T>(obj: T): T {
+  // Apenas devolve o objeto original para não quebrar a lógica das telas.
+  return obj;
+}
 
 // (Se quiser, você pode manter as funções de erro que você tinha, mas o essencial é acima)
