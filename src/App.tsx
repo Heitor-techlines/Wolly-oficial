@@ -8,7 +8,7 @@ import { Home, Film, Plus, Sparkles, User, ShieldAlert, Trash2, Lock, ArrowLeft,
 import { motion, AnimatePresence } from "motion/react";
 import UserAvatar from "./components/UserAvatar";
 
-import { db, auth, handleFirestoreError, OperationType, registerFirestoreErrorHandler } from ".firebase.ts";
+import { db, auth, handleFirestoreError, OperationType, registerFirestoreErrorHandler } from "./firebase.ts";
 import { signInAnonymously } from "firebase/auth";
 import {
   collection,
